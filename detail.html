@@ -24,83 +24,69 @@
   <body class="dark:bg-dark">
     <!-- Header start -->
     <header
-      class="absolute top-0 left-0 z-10 flex w-full items-center bg-transparent"
+      class="fixed top-0 left-0 z-10 flex w-full items-center bg-white dark:bg-dark"
     >
       <div class="container">
         <div class="relative flex items-center justify-between">
-          <div class="px-4">
+          <div class="px-4 logo">
             <a
               href="/"
               class="block py-6 text-2xl font-bold text-dark dark:text-white"
               >Quranku</a
             >
           </div>
-          <div class="flex items-center px-4">
-            <button
-              id="hamburger"
-              name="hamburger"
-              type="button"
-              class="absolute right-4 block lg:hidden"
-            >
-              <span
-                class="hamburger-line origin-top-left transition duration-300 ease-in-out"
-              ></span>
-              <span
-                class="hamburger-line transition duration-300 ease-in-out"
-              ></span>
-              <span
-                class="hamburger-line origin-bottom-left transition duration-300 ease-in-out"
-              ></span>
-            </button>
-
+          <div class="flex items-center">
             <nav
               id="nav-menu"
-              class="absolute right-4 top-full hidden w-full max-w-[250px] dark:bg-dark dark:shadow-primary rounded-lg bg-white py-5 shadow-lg lg:static lg:block lg:max-w-full lg:rounded-none lg:bg-transparent lg:shadow-none lg:dark:bg-transparent"
+              class="fixed bottom-0 left-0 w-full dark:bg-dark dark:shadow-primary rounded-lg bg-white py-2 shadow-lg lg:static lg:block lg:max-w-full lg:rounded-none lg:bg-transparent lg:shadow-none lg:dark:bg-transparent"
             >
-              <ul class="block lg:flex">
+              <ul class="flex items-center justify-center lg:flex">
                 <li class="group">
                   <a
                     href="/"
-                    class="mx-8 flex py-2 text-base font-semibold text-dark group-hover:text-secondary dark:text-white"
-                    >Surah</a
+                    class="mx-14 flex py-2 text-base font-semibold text-dark group-hover:text-secondary dark:text-white"
+                    ><i class="bx bx-book-open text-3xl lg:hidden"></i>
+                    <span class="hidden lg:block">Surah</span></a
+                  >
+                </li>
+                <li class="group">
+                  <a
+                    href="/murotal.html"
+                    class="mx-14 flex py-2 text-base font-semibold text-dark group-hover:text-secondary dark:text-white"
+                    ><i class="bx bxs-playlist text-3xl lg:hidden"></i>
+                    <span class="hidden lg:block">Murotal</span></a
                   >
                 </li>
                 <li class="group">
                   <a
                     href="#"
-                    class="mx-8 flex py-2 text-base font-semibold text-dark group-hover:text-secondary dark:text-white"
-                    >Murotal</a
+                    class="mx-14 flex py-2 text-base font-semibold text-dark group-hover:text-secondary dark:text-white"
+                    ><i class="bx bx-book-content text-3xl lg:hidden"></i>
+                    <span class="hidden lg:block">Jadwal Sholat</span></a
                   >
-                </li>
-                <li class="group">
-                  <a
-                    href="#"
-                    class="mx-8 flex py-2 text-base font-semibold text-dark group-hover:text-secondary dark:text-white"
-                    >Tafsir</a
-                  >
-                </li>
-                <li class="mt-3 flex items-center pl-8 lg:mt-0">
-                  <div class="flex">
-                    <span class="mr-2 text-sm text-primary dark:text-white"
-                      >light</span
-                    >
-                    <input type="checkbox" class="hidden" id="dark-toggle" />
-                    <label for="dark-toggle">
-                      <div
-                        class="flex h-5 w-9 cursor-pointer items-center rounded-full bg-slate-500 p-1"
-                      >
-                        <div
-                          class="toggle-circle h-4 w-4 rounded-full bg-white transition duration-300 ease-in-out"
-                        ></div>
-                      </div>
-                    </label>
-                    <span class="ml-2 text-sm text-primary dark:text-white"
-                      >dark</span
-                    >
-                  </div>
                 </li>
               </ul>
             </nav>
+          </div>
+          <div class="flex items-center mode mx-6 lg:mt-0">
+            <div class="flex">
+              <span class="mr-2 text-sm text-primary dark:text-white"
+                >light</span
+              >
+              <input type="checkbox" class="hidden" id="dark-toggle" />
+              <label for="dark-toggle">
+                <div
+                  class="flex h-5 w-9 cursor-pointer items-center rounded-full bg-slate-500 p-1"
+                >
+                  <div
+                    class="toggle-circle h-4 w-4 rounded-full bg-white transition duration-300 ease-in-out"
+                  ></div>
+                </div>
+              </label>
+              <span class="ml-2 text-sm text-primary dark:text-white"
+                >dark</span
+              >
+            </div>
           </div>
         </div>
       </div>
@@ -111,57 +97,16 @@
     <section id="detail" class="pt-28 lg:pt-24 mb-5">
       <div class="container">
         <div class="flex flex-wrap">
-          <div class="flex w-full flex-wrap px-4 xl:mx-auto" id="detail-surah">
+          <div
+            class="flex w-full flex-wrap px-4 pb-16 xl:mx-auto"
+            id="detail-surah"
+          >
             <!-- Detail surah -->
           </div>
         </div>
       </div>
     </section>
     <!-- Section detail end -->
-
-    <!-- Footer Start -->
-    <footer class="pt-8 w-full bg-dark">
-      <div class="container">
-        <div class="flex flex-wrap">
-          <div class="w-full px-4 lg:w-1/2">
-            <h4 class="font-medium text-secondary text-lg mb-3">
-              &copy; 2024 mmirzafahlefi.
-            </h4>
-          </div>
-
-          <div class="w-full px-4 lg:w-1/2 mb-8">
-            <div class="flex items-center lg:justify-end">
-              <a
-                href="https://www.instagram.com/mmirzafahlefi"
-                class="w-9 h-9 mr-3 rounded-full flex justify-center items-center border border-slate-300 hover:border-primary hover:bg-primary text-white"
-                ><i class="bx bxl-instagram lg:mt-1"></i
-              ></a>
-              <a
-                href="#"
-                class="w-9 h-9 mr-3 rounded-full flex justify-center items-center border border-slate-300 hover:border-primary hover:bg-primary text-white"
-                ><i class="bx bxl-facebook lg:mt-1"></i
-              ></a>
-              <a
-                href="#"
-                class="w-9 h-9 mr-3 rounded-full flex justify-center items-center border border-slate-300 hover:border-primary hover:bg-primary text-white"
-                ><i class="bx bxl-whatsapp lg:mt-1"></i
-              ></a>
-            </div>
-          </div>
-        </div>
-      </div>
-    </footer>
-    <!-- Footer End -->
-
-    <!-- Back to top Start -->
-    <a
-      href="#home"
-      class="fixed bottom-4 right-4 z-[9999] hidden h-10 w-10 items-center justify-center rounded-full bg-primary p-4 hover:animate-pulse"
-      id="to-top"
-    >
-      <i class="bx bx-up-arrow-alt text-lg font-medium text-white"></i>
-    </a>
-    <!-- Back to top End -->
 
     <!-- script -->
     <script src="src/js/jquery.js"></script>
