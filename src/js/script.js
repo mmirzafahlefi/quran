@@ -280,6 +280,54 @@ $.ajax({
 });
 
 // data murotal
+// function player() {
+//   $(".player").append(`<div style="width: 50px; height: 50px"></div>
+//     <div class="audio-player">
+//       <div class="timeline">
+//         <div class="progress"></div>
+//       </div>
+//       <div class="controls">
+//         <div class="play-container">
+//           <div class="toggle-play play"></div>
+//         </div>
+//         <div class="time">
+//           <div class="current">0:00</div>
+//           <div class="divider">/</div>
+//           <div class="length"></div>
+//         </div>
+//         <div class="name">Music Song</div>
+//         <!--     credit for icon to https://saeedalipoor.github.io/icono/ -->
+//         <div class="volume-container">
+//           <div class="volume-button">
+//             <div class="volume icono-volumeMedium"></div>
+//           </div>
+
+//           <div class="volume-slider">
+//             <div class="volume-percentage"></div>
+//           </div>
+//         </div>
+//       </div>
+//     </div>`);
+// }
+// player();
+
+$("#daftar-murotal").on("click", `#${getNomor}`, function () {
+  var value = $(this).data("value");
+  audioPlayer = new oyoPlayer();
+  $(".player").append(audioPlayer);
+  audioPlayer.addToPlaylist(value, "play");
+  audioPlayer.setSourceIndex(1);
+  audioPlayer.setNotification("Push Play to start");
+  // $(".player #my-audio").on("canplay", function () {
+  //   console.log(this.duration);
+  // });
+});
+
+// const getMurotal = function (link) {
+//   const value = $(`#${getNomor}`).data("value");
+//   console.log(value);
+//   window.localStorage.setItem("link", link);
+// };
 
 $.ajax({
   url: "https://equran.id/api/v2/surat",
@@ -291,7 +339,7 @@ $.ajax({
 
     $.each(murotal, function (i, hasil) {
       $("#daftar-murotal").append(
-        `<div id="surah" class="lg:p-2 w-full lg:w-1/4" onclick="getDetailSurah(${hasil.nomor})" data-search="${hasil.namaLatin}">
+        `<div id="${hasil.nomor}" class="lg:p-2 w-full cursor-pointer lg:w-1/4" onclick="getDetailSurah(${hasil.nomor})" data-search="${hasil.namaLatin}" data-value="${hasil.audioFull[suara]}">
       <div
         class="overflow-hidden rounded-lg shadow-md mb-5 bg-primary py-3 px-8"
       >
@@ -303,11 +351,6 @@ $.ajax({
           ${hasil.nama}
           </h1>
           <p class="text-base font-sm text-light">${hasil.tempatTurun} - ${hasil.arti}</p>
-          <audio id="my-audio" controls>
-            <source id="audio-src" src="` +
-          hasil.audioFull[suara] +
-          `" type="audio/mpeg">
-          </audio>
         </div>
       </div>
     </div>`
@@ -322,6 +365,21 @@ $(document).ready(function ($) {
     var filter = $(this).val(),
       count = 0;
     $("#daftar-surah #surah").each(function () {
+      if ($(this).text().search(filter, "i") < 0) {
+        $(this).fadeOut();
+      } else {
+        $(this).show();
+        count++;
+      }
+    });
+  });
+});
+
+$(document).ready(function ($) {
+  $("#search-input").keyup(function (event) {
+    var filter = $(this).val(),
+      count = 0;
+    $("#daftar-murotal #murotal").each(function () {
       if ($(this).text().search(filter, "i") < 0) {
         $(this).fadeOut();
       } else {
