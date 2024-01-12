@@ -313,21 +313,20 @@ $.ajax({
 
 $("#daftar-murotal").on("click", `#${getNomor}`, function () {
   var value = $(this).data("value");
+  var nama = $(this).data("nama");
   audioPlayer = new oyoPlayer();
   $(".player").append(audioPlayer);
-  audioPlayer.addToPlaylist(value, "play");
+  audioPlayer.addToPlaylist(value, nama);
   audioPlayer.setSourceIndex(1);
   audioPlayer.setNotification("Push Play to start");
-  // $(".player #my-audio").on("canplay", function () {
-  //   console.log(this.duration);
-  // });
+  $(".player audio").on("canplay", function () {
+    const deration = this.duration;
+    let x = Math.trunc(deration);
+    console.log(x + "000");
+    setTimeout(() => location.reload(true), x + "000");
+  });
+  $(".player .oyotagbox").addClass("lg:w-full");
 });
-
-// const getMurotal = function (link) {
-//   const value = $(`#${getNomor}`).data("value");
-//   console.log(value);
-//   window.localStorage.setItem("link", link);
-// };
 
 $.ajax({
   url: "https://equran.id/api/v2/surat",
@@ -336,10 +335,17 @@ $.ajax({
   success: function (result) {
     let murotal = result.data;
     let suara = getSuara;
+    const selectSuara = $("select#suara");
+
+    if (selectSuara.val() == suara) {
+      selectSuara.attr("selected", "selected");
+    }
+
+    $("select#suara").val(suara);
 
     $.each(murotal, function (i, hasil) {
       $("#daftar-murotal").append(
-        `<div id="${hasil.nomor}" class="lg:p-2 w-full cursor-pointer lg:w-1/4" onclick="getDetailSurah(${hasil.nomor})" data-search="${hasil.namaLatin}" data-value="${hasil.audioFull[suara]}">
+        `<div id="${hasil.nomor}" class="lg:p-2 w-full cursor-pointer lg:w-1/4" onclick="getDetailSurah(${hasil.nomor})" data-search="${hasil.namaLatin}" data-value="${hasil.audioFull[suara]}" data-nama="${hasil.namaLatin}">
       <div
         class="overflow-hidden rounded-lg shadow-md mb-5 bg-primary py-3 px-8"
       >
