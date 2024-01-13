@@ -41,7 +41,7 @@ $.ajax({
           <h1 class="text-light">${hasil.nomor}. ${hasil.namaLatin}</h1>
         </div>
         <div class="w-full text-right">
-          <h1 class="text-2xl font-bold text-light dark:text-white">
+          <h1 class="text-2xl font-bold text-white">
           ${hasil.nama}
           </h1>
           <p class="text-base font-sm text-light">${hasil.tempatTurun} - ${hasil.arti}</p>
@@ -86,10 +86,10 @@ $.ajax({
         class="overflow-hidden rounded-lg shadow-md mb-5 bg-primary py-3 px-8"
       >
         <div class="w-full mb-2 flex items-center justify-center">
-          <h1 class="text-light dark:text-white text-3xl">${data.nama} </h1>
+          <h1 class="text-white text-3xl">${data.nama} </h1>
         </div>
         <div class="w-full flex items-center justify-center">
-          <p class="text-light dark:text-white">${data.namaLatin} - ${data.tempatTurun} - ${data.arti}</p>
+          <p class="text-light">${data.namaLatin} - ${data.tempatTurun} - ${data.arti}</p>
         </div>
       </div>
     </div>
@@ -99,7 +99,7 @@ $.ajax({
         class="overflow-hidden rounded-lg shadow-md mb-5 bg-primary py-3 px-8"
       >
         <div class="w-full flex items-center justify-center">
-          <p class="text-light dark:text-white text-lg font-bold">Baca Tafsir</p>
+          <p class="text-white text-lg font-bold">Baca Tafsir</p>
         </div>
       </div>
     </a>
@@ -113,7 +113,7 @@ $.ajax({
       <div
         class="overflow-hidden rounded-lg shadow-md mb-5 bg-primary py-3 px-8 flex items-center justify-center"
       >
-        <h1 class="text-light dark:text-white text-2xl">
+        <h1 class="text-white text-2xl">
           بِسْمِ اللّهِ الرَّحْمَنِ الرَّحِيْ
         </h1>
       </div>
@@ -132,7 +132,7 @@ $.ajax({
           `</h1>
       </div>
       <div class="w-full">
-        <h1 class="text-2xl font-bold text-light dark:text-white mb-3 text-right">
+        <h1 class="text-2xl font-bold text-white mb-3 text-right">
         ` +
           hasil.teksArab +
           `
@@ -153,12 +153,12 @@ $.ajax({
     if (getNomor == "1") {
       $("#detail-surah").append(
         `
-      <a href="../detail.html" onclick="getDetailSurah(${nextSurah.nomor})" class="w-1/2">
+      <a href="../detail.html" onclick="getDetailSurah(${nextSurah.nomor})" class="w-1/2 text-light hover:text-white transition duration-200">
         <div
           class="overflow-hidden rounded-lg shadow-md mb-5 bg-primary py-3 px-8"
         >
           <div class="w-full flex items-center justify-center">
-            <p class="text-light dark:text-white text-medium">${nextSurah.namaLatin} </p>
+            <p class="text-medium">${nextSurah.namaLatin} </p>
           </div>
         </div>
       </a>
@@ -173,8 +173,8 @@ $.ajax({
           class="overflow-hidden rounded-lg shadow-md mb-5 bg-primary py-3 px-8"
         >
           <div class="w-full flex items-center justify-between">
-            <a href="../detail.html" onclick="getDetailSurah(${prevSurah.nomor})" class="text-light dark:text-white text-medium">${prevSurah.namaLatin} </a>
-            <a href="../detail.html" onclick="getDetailSurah(${nextSurah.nomor})" class="text-light dark:text-white text-medium">${nextSurah.namaLatin} </a>
+            <a href="../detail.html" onclick="getDetailSurah(${prevSurah.nomor})" class="text-light hover:text-white text-medium">${prevSurah.namaLatin} </a>
+            <a href="../detail.html" onclick="getDetailSurah(${nextSurah.nomor})" class="text-light hover:text-white text-medium">${nextSurah.namaLatin} </a>
           </div>
         </div>
       </div>
@@ -202,23 +202,23 @@ $.ajax({
         class="overflow-hidden rounded-lg shadow-md mb-5 bg-primary py-3 px-8"
       >
         <div class="w-full mb-2 flex items-center justify-center">
-          <h1 class="text-light dark:text-white text-3xl">${data.nama} </h1>
+          <h1 class="text-white text-3xl">${data.nama} </h1>
         </div>
         <div class="w-full flex items-center justify-center">
-          <p class="text-light dark:text-white">${data.namaLatin} - ${data.tempatTurun} - ${data.arti}</p>
+          <p class="text-light">${data.namaLatin} - ${data.tempatTurun} - ${data.arti}</p>
         </div>
       </div>
     </div>
 
-    <div class="w-full">
+    <a href="../detail.html" onclick="getDetailSurah(${data.nomor})" class="w-full">
       <div
         class="overflow-hidden rounded-lg shadow-md mb-5 bg-primary py-3 px-8"
       >
         <div class="w-full flex items-center justify-center">
-          <a href="../detail.html" onclick="getDetailSurah(${data.nomor})" class="text-light dark:text-white text-lg font-bold">Baca Surah</a>
+          <p class="text-white text-lg font-bold">Baca Surah</p>
         </div>
       </div>
-    </div>
+    </a>
     `
     );
 
@@ -234,7 +234,7 @@ $.ajax({
           `</h1>
       </div>
       <div class="w-full">
-        <h1 class="text-base text-light dark:text-white mb-3">
+        <h1 class="text-base text-white mb-3">
         ` +
           hasil.teks +
           `
@@ -248,12 +248,12 @@ $.ajax({
     if (getNomor == "1") {
       $("#detail-tafsir").append(
         `
-      <a href="../tafsir.html" onclick="getDetailSurah(${nextSurah.nomor})" class="w-1/2">
+      <a href="../tafsir.html" onclick="getDetailSurah(${nextSurah.nomor})" class="w-1/2 text-light hover:text-white transition duration-200">
         <div
           class="overflow-hidden rounded-lg shadow-md mb-5 bg-primary py-3 px-8"
         >
           <div class="w-full flex items-center justify-center">
-            <p class="text-light dark:text-white text-medium">${nextSurah.namaLatin} </p>
+            <p class="text-medium">${nextSurah.namaLatin} </p>
           </div>
         </div>
       </a>
@@ -268,8 +268,8 @@ $.ajax({
           class="overflow-hidden rounded-lg shadow-md mb-5 bg-primary py-3 px-8"
         >
           <div class="w-full flex items-center justify-between">
-            <a href="../tafsir.html" onclick="getDetailSurah(${prevSurah.nomor})" class="text-light dark:text-white text-medium">${prevSurah.namaLatin} </a>
-            <a href="../tafsir.html" onclick="getDetailSurah(${nextSurah.nomor})" class="text-light dark:text-white text-medium">${nextSurah.namaLatin} </a>
+            <a href="../tafsir.html" onclick="getDetailSurah(${prevSurah.nomor})" class="text-light hover:text-white text-medium">${prevSurah.namaLatin} </a>
+            <a href="../tafsir.html" onclick="getDetailSurah(${nextSurah.nomor})" class="text-light hover:text-white text-medium">${nextSurah.namaLatin} </a>
           </div>
         </div>
       </div>
@@ -280,52 +280,25 @@ $.ajax({
 });
 
 // data murotal
-// function player() {
-//   $(".player").append(`<div style="width: 50px; height: 50px"></div>
-//     <div class="audio-player">
-//       <div class="timeline">
-//         <div class="progress"></div>
-//       </div>
-//       <div class="controls">
-//         <div class="play-container">
-//           <div class="toggle-play play"></div>
-//         </div>
-//         <div class="time">
-//           <div class="current">0:00</div>
-//           <div class="divider">/</div>
-//           <div class="length"></div>
-//         </div>
-//         <div class="name">Music Song</div>
-//         <!--     credit for icon to https://saeedalipoor.github.io/icono/ -->
-//         <div class="volume-container">
-//           <div class="volume-button">
-//             <div class="volume icono-volumeMedium"></div>
-//           </div>
-
-//           <div class="volume-slider">
-//             <div class="volume-percentage"></div>
-//           </div>
-//         </div>
-//       </div>
-//     </div>`);
-// }
-// player();
 
 $("#daftar-murotal").on("click", `#${getNomor}`, function () {
   var value = $(this).data("value");
   var nama = $(this).data("nama");
+
   audioPlayer = new oyoPlayer();
   $(".player").append(audioPlayer);
   audioPlayer.addToPlaylist(value, nama);
   audioPlayer.setSourceIndex(1);
   audioPlayer.setNotification("Push Play to start");
+
   $(".player audio").on("canplay", function () {
     const deration = this.duration;
     let x = Math.trunc(deration);
     console.log(x + "000");
     setTimeout(() => location.reload(true), x + "000");
   });
-  $(".player .oyotagbox").addClass("lg:w-full");
+  $(".player .oyoplayer").addClass(["mb-[4.5rem]", "lg:mb-0"]);
+  $(".player .oyotagbox").addClass(["w-[50%]", "lg:w-full"]);
 });
 
 $.ajax({
@@ -353,7 +326,7 @@ $.ajax({
           <h1 class="text-light">${hasil.nomor}. ${hasil.namaLatin}</h1>
         </div>
         <div class="w-full text-right">
-          <h1 class="text-2xl font-bold text-light dark:text-white">
+          <h1 class="text-2xl font-bold text-white">
           ${hasil.nama}
           </h1>
           <p class="text-base font-sm text-light">${hasil.tempatTurun} - ${hasil.arti}</p>
@@ -371,21 +344,6 @@ $(document).ready(function ($) {
     var filter = $(this).val(),
       count = 0;
     $("#daftar-surah #surah").each(function () {
-      if ($(this).text().search(filter, "i") < 0) {
-        $(this).fadeOut();
-      } else {
-        $(this).show();
-        count++;
-      }
-    });
-  });
-});
-
-$(document).ready(function ($) {
-  $("#search-input").keyup(function (event) {
-    var filter = $(this).val(),
-      count = 0;
-    $("#daftar-murotal #murotal").each(function () {
       if ($(this).text().search(filter, "i") < 0) {
         $(this).fadeOut();
       } else {
