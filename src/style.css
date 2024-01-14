@@ -35,9 +35,9 @@ body {
     @apply text-primary;
 }
 
-#dark-toggle:checked~label div.toggle-circle {
+/* #dark-toggle:checked~label div.toggle-circle {
     @apply translate-x-3;
-}
+} */
 
 input::placeholder {
     @apply text-light;

@@ -38,7 +38,7 @@
           <div class="flex items-center">
             <nav
               id="nav-menu"
-              class="fixed bottom-0 left-0 w-full dark:bg-dark dark:shadow-primary rounded-lg bg-white py-2 shadow-lg lg:static lg:block lg:max-w-full lg:rounded-none lg:bg-transparent lg:shadow-none lg:dark:bg-transparent"
+              class="fixed bottom-0 left-0 w-full dark:bg-dark rounded-lg bg-white py-2 shadow-[-10px_-10px_30px_4px_rgba(0,0,0,0.1),_10px_10px_30px_4px_rgba(45,78,255,0.15)] lg:static lg:block lg:max-w-full lg:rounded-none lg:bg-transparent lg:shadow-none lg:dark:bg-transparent"
             >
               <ul class="flex items-center justify-center lg:flex">
                 <li class="group">
@@ -68,24 +68,15 @@
               </ul>
             </nav>
           </div>
-          <div class="flex items-center mode mx-6 lg:mt-0">
+          <div class="flex items-center mx-6 lg:mt-2">
             <div class="flex">
-              <span class="mr-2 text-sm text-primary dark:text-white"
-                >light</span
-              >
               <input type="checkbox" class="hidden" id="dark-toggle" />
               <label for="dark-toggle">
-                <div
-                  class="flex h-5 w-9 cursor-pointer items-center rounded-full bg-slate-500 p-1"
-                >
-                  <div
-                    class="toggle-circle h-4 w-4 rounded-full bg-white transition duration-300 ease-in-out"
-                  ></div>
-                </div>
+                <i
+                  class="bx bx-sun cursor-pointer text-2xl text-dark dark:text-white transition duration-300"
+                  id="mode"
+                ></i>
               </label>
-              <span class="ml-2 text-sm text-primary dark:text-white"
-                >dark</span
-              >
             </div>
           </div>
         </div>

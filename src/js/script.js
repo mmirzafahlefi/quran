@@ -6,9 +6,11 @@ darkToggle.addEventListener("click", function () {
   if (darkToggle.checked) {
     html.classList.add("dark");
     localStorage.theme = "dark";
+    $("#mode").removeClass("bx-sun").addClass("bx-moon");
   } else {
     html.classList.remove("dark");
     localStorage.theme = "light";
+    $("#mode").removeClass("bx-moon").addClass("bx-sun");
   }
 });
 
@@ -280,64 +282,6 @@ $.ajax({
 });
 
 // data murotal
-
-// $("#daftar-murotal").on("click", `#${getNomor}`, function () {
-//   var value = $(this).data("value");
-//   var nama = $(this).data("nama");
-
-//   audioPlayer = new oyoPlayer();
-//   $(".player").append(audioPlayer);
-//   audioPlayer.addToPlaylist(value, nama);
-//   audioPlayer.setSourceIndex(1);
-//   audioPlayer.setNotification("Push Play to start");
-
-//   $(".player audio").on("canplay", function () {
-//     const deration = this.duration;
-//     let x = Math.trunc(deration);
-//     console.log(x + "000");
-//     setTimeout(() => location.reload(true), x + "000");
-//   });
-//   $(".player .oyoplayer").addClass(["mb-[4.5rem]", "lg:mb-0"]);
-//   $(".player .oyotagbox").addClass(["w-[50%]", "lg:w-full"]);
-// });
-
-// $.ajax({
-//   url: "https://equran.id/api/v2/surat",
-//   type: "get",
-//   dataType: "JSON",
-//   success: function (result) {
-//     let murotal = result.data;
-//     let suara = getSuara;
-//     const selectSuara = $("select#suara");
-
-//     if (selectSuara.val() == suara) {
-//       selectSuara.attr("selected", "selected");
-//     }
-
-//     $("select#suara").val(suara);
-
-//     $.each(murotal, function (i, hasil) {
-//       $("#daftar-murotal").append(
-//         `<div id="${hasil.nomor}" class="lg:p-2 w-full cursor-pointer lg:w-1/4" onclick="getDetailSurah(${hasil.nomor})" data-search="${hasil.namaLatin}" data-value="${hasil.audioFull[suara]}" data-nama="${hasil.namaLatin}">
-//       <div
-//         class="overflow-hidden rounded-lg shadow-md mb-5 bg-primary py-3 px-8"
-//       >
-//         <div class="w-full mb-2">
-//           <h1 class="text-light">${hasil.nomor}. ${hasil.namaLatin}</h1>
-//         </div>
-//         <div class="w-full text-right">
-//           <h1 class="text-2xl font-bold text-white">
-//           ${hasil.nama}
-//           </h1>
-//           <p class="text-base font-sm text-light">${hasil.tempatTurun} - ${hasil.arti}</p>
-//         </div>
-//       </div>
-//     </div>`
-//       );
-//     });
-//   },
-// });
-
 $.ajax({
   url: "https://equran.id/api/v2/surat",
   type: "get",
@@ -361,7 +305,7 @@ $.ajax({
       playlist.append(
         `<div id="murotal" class="lg:p-2 w-full cursor-pointer lg:w-1/4" data-id="${hasil.nomor}" data-value="${hasil.audioFull[suara]}" data-nama="${hasil.namaLatin}">
       <div
-        class="overflow-hidden rounded-lg shadow-md mb-5 bg-primary py-3 px-8"
+        class="overflow-hidden rounded-lg shadow-md mb-5 bg-gradient-to-r bg-primary py-3 px-8"
       >
         <div class="w-full mb-2">
           <h1 class="text-light">${hasil.nomor}. ${hasil.namaLatin}</h1>
