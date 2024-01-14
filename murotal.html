@@ -17,7 +17,7 @@
       href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="src/oyoplayer.css" />
+    <!-- <link rel="stylesheet" href="src/oyoplayer.css" /> -->
 
     <link href="src/output.css" rel="stylesheet" />
     <script>
@@ -139,8 +139,39 @@
 
             <div class="w-full">
               <div
-                class="fixed bottom-0 left-0 overflow-hidden w-full shadow-md bg-primary flex items-center justify-center player"
-              ></div>
+                class="fixed left-0 bottom-0 hidden w-full mx-auto bg-white rounded-lg shadow-md player"
+              >
+                <audio
+                  class="w-full mb-20 hidden"
+                  id="my-audio"
+                  controls
+                  preload="none"
+                ></audio>
+
+                <div class="w-full flex justify-between py-2 px-2">
+                  <div id="currentTime" class="text-dark text-sm ml-2"></div>
+                  <div id="judul" class="text-dark text-sm">Click to play</div>
+                  <div id="totalTime" class="text-dark text-sm mr-2"></div>
+                </div>
+
+                <div class="audio-progress">
+                  <div id="progressBar" class="audio-progress-bar"></div>
+                </div>
+
+                <div
+                  class="flex w-full justify-center items-center pb-16 lg:mb-0"
+                >
+                  <button id="prevBtn" class="text-dark">
+                    <i class="bx bx-skip-previous text-2xl px-4"></i>
+                  </button>
+                  <button id="playPauseBtn" class="text-dark">
+                    <i class="bx bx-play text-3xl px-4"></i>
+                  </button>
+                  <button id="nextBtn" class="text-dark">
+                    <i class="bx bx-skip-next text-2xl px-4"></i>
+                  </button>
+                </div>
+              </div>
             </div>
           </div>
         </div>
