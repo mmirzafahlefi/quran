@@ -48,7 +48,6 @@ input::placeholder {
   height: 5px;
   background-color: #888;
   position: relative;
-  margin-top: 10px;
 }
 
 .audio-progress-bar {

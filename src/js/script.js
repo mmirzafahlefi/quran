@@ -66,9 +66,16 @@ const getNomorSuara = $("select#suara").change(function () {
   location.reload();
 });
 
+const setLokasi = $("select#lokasi").change(function () {
+  var id = $(this).children("option:selected").val();
+  window.localStorage.setItem("lokasi", String(id));
+  location.reload();
+});
+
 // get nomor surah
 const getNomor = window.localStorage.getItem("nomor");
 const getSuara = window.localStorage.getItem("suara");
+const getLokasi = window.localStorage.getItem("lokasi");
 
 // detail surah
 $.ajax({
@@ -291,6 +298,7 @@ $.ajax({
     let suara = getSuara;
     let currentSongIndex = 0;
     let isPlaying = false;
+    // let isMuted = false;
     const playlist = $("#daftar-murotal");
     const selectSuara = $("select#suara");
     const myAudio = $("#my-audio");
@@ -326,6 +334,41 @@ $.ajax({
       $(".player").removeClass("hidden").addClass("block");
       playSong();
     });
+
+    // Tambahkan event click pada tombol prev
+    $("#prevBtn").on("click", function () {
+      if (currentSongIndex > 0) {
+        currentSongIndex--;
+        playSong();
+      }
+    });
+
+    // Tambahkan event click pada tombol next
+    $("#nextBtn").on("click", function () {
+      if (currentSongIndex < murotal.length - 1) {
+        currentSongIndex++;
+        playSong();
+      }
+    });
+
+    // Volume control
+    // $("#muteBtn").on("click", function () {
+    //   const audioPlayer = myAudio[0];
+
+    //   if (isMuted) {
+    //     audioPlayer.muted = false;
+    //     $("#muteBtn i")
+    //       .removeClass("bx-volume-mute")
+    //       .addClass("bx-volume-full");
+    //   } else {
+    //     audioPlayer.muted = true;
+    //     $("#muteBtn i")
+    //       .removeClass("bx-volume-full")
+    //       .addClass("bx-volume-mute");
+    //   }
+
+    //   isMuted = !isMuted;
+    // });
 
     $("#playPauseBtn").on("click", function () {
       const audioPlayer = myAudio[0];
@@ -374,6 +417,13 @@ $.ajax({
       titleDisplay.text(murotal[currentSongIndex - 1].namaLatin);
     });
 
+    myAudio.on("ended", function () {
+      if (currentSongIndex < murotal.length - 1) {
+        currentSongIndex++;
+        playSong();
+      }
+    });
+
     // Handle click on progress bar to seek
     $(".audio-progress").on("click", function (e) {
       const audioPlayer = $("#audioPlayer")[0];
@@ -395,6 +445,114 @@ $.ajax({
       myAudio[0].load();
       myAudio[0].play();
     }
+  },
+});
+
+// Jadwal Sholat
+// menampilkan waktu
+$(document).ready(function () {
+  var waktuSekarang = new Date();
+  // menambahkan waktu
+  var jam = waktuSekarang.getHours();
+  var menit = waktuSekarang.getMinutes();
+  // manambahkan tahun, bulan, tanggal
+  var tahun = waktuSekarang.getFullYear();
+  var bulan = waktuSekarang.getMonth() + 1; // Perlu ditambah 1 karena indeks bulan dimulai dari 0
+  var tanggal = waktuSekarang.getDate();
+
+  // menampilkan waktu
+  jam = jam < 10 ? "0" + jam : jam;
+  menit = menit < 10 ? "0" + menit : menit;
+  $("#waktu").text(jam + " : " + menit);
+
+  // menampiilkan tahun, bulan, tanggal
+  bulan = bulan < 10 ? "0" + bulan : bulan;
+  tanggal = tanggal < 10 ? "0" + tanggal : tanggal;
+  window.localStorage.setItem("tahun", String(tahun));
+  window.localStorage.setItem("bulan", String(bulan));
+  window.localStorage.setItem("tanggal", String(tanggal));
+  $("#tanggal").text(tanggal + "/" + bulan + "/" + tahun);
+});
+
+// manampilkan data kota
+$.ajax({
+  url: "https://api.myquran.com/v2/sholat/kota/semua",
+  type: "get",
+  dataType: "JSON",
+  success: function (result) {
+    let kota = result.data;
+
+    $.each(kota, function (i, hasil) {
+      $("select#lokasi").append(
+        `<option value="${hasil.id}">${hasil.lokasi}</option>`
+      );
+    });
+  },
+});
+
+// menampilkan daerah
+$.ajax({
+  url: `https://api.myquran.com/v2/sholat/kota/${getLokasi}`,
+  type: "get",
+  dataType: "JSON",
+  success: function (result) {
+    let kota = result.data;
+    console.log(kota);
+    $("#daerah").text(kota.lokasi);
+  },
+});
+
+// menampilkan jadwal harian
+const tahun = window.localStorage.getItem("tahun");
+const bulan = window.localStorage.getItem("bulan");
+const tanggal = window.localStorage.getItem("tanggal");
+
+$.ajax({
+  url: `https://api.myquran.com/v2/sholat/jadwal/${getLokasi}/${tahun}/${bulan}/${tanggal}`,
+  type: "get",
+  dataType: "JSON",
+  success: function (result) {
+    let jadwal = result.data.jadwal;
+    console.log(jadwal);
+
+    $("#jadwal-sholat").append(`<div class="w-full">
+    <div
+      class="overflow-hidden rounded-lg shadow-md mb-5 bg-primary py-3 px-8 flex items-center justify-between"
+    >
+      <p class="text-white text-base">Imsak</p>
+      <h1 class="text-white text-2xl">${jadwal.imsak}</h1>
+    </div>
+    <div
+      class="overflow-hidden rounded-lg shadow-md mb-5 bg-primary py-3 px-8 flex items-center justify-between"
+    >
+      <p class="text-white text-base">Subuh</p>
+      <h1 class="text-white text-2xl">${jadwal.subuh}</h1>
+    </div>
+    <div
+      class="overflow-hidden rounded-lg shadow-md mb-5 bg-primary py-3 px-8 flex items-center justify-between"
+    >
+      <p class="text-white text-base">Dzuhur</p>
+      <h1 class="text-white text-2xl">${jadwal.dzuhur}</h1>
+    </div>
+    <div
+      class="overflow-hidden rounded-lg shadow-md mb-5 bg-primary py-3 px-8 flex items-center justify-between"
+    >
+      <p class="text-white text-base">Ashar</p>
+      <h1 class="text-white text-2xl">${jadwal.ashar}</h1>
+    </div>
+    <div
+      class="overflow-hidden rounded-lg shadow-md mb-5 bg-primary py-3 px-8 flex items-center justify-between"
+    >
+      <p class="text-white text-base">Maghrib</p>
+      <h1 class="text-white text-2xl">${jadwal.maghrib}</h1>
+    </div>
+    <div
+      class="overflow-hidden rounded-lg shadow-md mb-5 bg-primary py-3 px-8 flex items-center justify-between"
+    >
+      <p class="text-white text-base">Isya</p>
+      <h1 class="text-white text-2xl">${jadwal.isya}</h1>
+    </div>
+  </div>`);
   },
 });
 
