@@ -1,5 +1,5 @@
-$("header").append(`<div class="container">
-<div class="relative flex items-center justify-between">
+$("header")
+  .append(`<div class="container"><div class="relative flex items-center justify-between">
   <div class="px-4 logo">
     <a
       href="/"
@@ -37,7 +37,7 @@ $("header").append(`<div class="container">
             <span class="hidden lg:block">Jadwal Sholat</span></a
           >
         </li>
-      </ul>
+      </ul
     </nav>
   </div>
   <div class="flex items-center mx-6 lg:mt-2">

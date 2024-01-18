@@ -18,11 +18,6 @@
       rel="stylesheet"
     />
 
-    <link
-      href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.2.1/flowbite.min.css"
-      rel="stylesheet"
-    />
-
     <link href="src/output.css" rel="stylesheet" />
     <script>
       if (
@@ -45,8 +40,8 @@
     </header>
     <!-- header end -->
 
-    <!-- Section Home start -->
-    <section id="home" class="pt-28 lg:pt-24">
+    <!-- Section Murotal start -->
+    <section id="murotal" class="pt-28 lg:pt-24">
       <div class="container">
         <div class="flex flex-wrap">
           <div
@@ -64,9 +59,12 @@
 
             <select
               id="suara"
+              value="pilih"
               class="w-full py-3 px-3 rounded-lg mb-4 text-dark outline-dark outline-2 border-primary border-2"
             >
-              <option>Pilih suara</option>
+              <option value="pilih" disabled hidden class="text-dark">
+                Pilih suara
+              </option>
               <option value="01">Abdullah Al-Juhany</option>
               <option value="02">Abdul Muhsi Al-Qasim</option>
               <option value="03">Abdurrahman As-Sudais</option>
@@ -78,7 +76,7 @@
 
             <div class="w-full">
               <div
-                class="fixed left-0 bottom-0 hidden w-full mx-auto bg-white rounded-lg shadow-md player"
+                class="fixed left-0 bottom-0 hidden w-full mx-auto bg-white shadow-md player"
               >
                 <audio
                   class="w-full mb-20 hidden"
@@ -101,7 +99,9 @@
                   <div id="progressBar" class="audio-progress-bar"></div>
                 </div>
 
-                <div class="flex w-full justify-center items-center pb-16">
+                <div
+                  class="flex w-full justify-center items-center pb-16 lg:pb-0"
+                >
                   <button id="prevBtn" class="text-dark">
                     <i class="bx bx-skip-previous text-2xl px-4"></i>
                   </button>
@@ -121,11 +121,10 @@
         </div>
       </div>
     </section>
-    <!-- Section Home end -->
+    <!-- Section Murotal end -->
 
     <!-- script -->
     <script src="src/js/jquery.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.2.1/flowbite.min.js"></script>
     <script src="src/js/navbar.js"></script>
     <script src="src/js/script.js"></script>
   </body>

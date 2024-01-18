@@ -468,9 +468,6 @@ $(document).ready(function () {
   // menampiilkan tahun, bulan, tanggal
   bulan = bulan < 10 ? "0" + bulan : bulan;
   tanggal = tanggal < 10 ? "0" + tanggal : tanggal;
-  window.localStorage.setItem("tahun", String(tahun));
-  window.localStorage.setItem("bulan", String(bulan));
-  window.localStorage.setItem("tanggal", String(tanggal));
   $("#tanggal").text(tanggal + "/" + bulan + "/" + tahun);
 });
 
@@ -503,9 +500,12 @@ $.ajax({
 });
 
 // menampilkan jadwal harian
-const tahun = window.localStorage.getItem("tahun");
-const bulan = window.localStorage.getItem("bulan");
-const tanggal = window.localStorage.getItem("tanggal");
+var waktuSekarang = new Date();
+var tahun = waktuSekarang.getFullYear();
+var bulan = waktuSekarang.getMonth() + 1; // Perlu ditambah 1 karena indeks bulan dimulai dari 0
+var tanggal = waktuSekarang.getDate();
+bulan = bulan < 10 ? "0" + bulan : bulan;
+tanggal = tanggal < 10 ? "0" + tanggal : tanggal;
 
 $.ajax({
   url: `https://api.myquran.com/v2/sholat/jadwal/${getLokasi}/${tahun}/${bulan}/${tanggal}`,
